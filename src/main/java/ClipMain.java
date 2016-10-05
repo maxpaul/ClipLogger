@@ -87,8 +87,10 @@ public class ClipMain extends Application {
             public void run() {
                 do {
                     Button refreshBtn = null;
-                    String clipBoard = getStringFromClipboard();
-                    if (clipBoard !=null) {
+                    String clipBoardRaw = getStringFromClipboard();
+                    // bug fix remove the UFT-8 or non ASCII letters charactors
+                    if (clipBoardRaw !=null) {
+                        String clipBoard = clipBoardRaw.replaceAll("[^\\x00-\\x7F]", "");
                         if (!clipBoard.trim().isEmpty()) {
                             if (!prevClip.equals(clipBoard)) {
                                 log.trace(clipBoard + clipSufix);
