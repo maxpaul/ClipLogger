@@ -88,11 +88,12 @@ public class ClipMain extends Application {
                 do {
                     Button refreshBtn = null;
                     String clipBoard = getStringFromClipboard();
-
-                    if (!clipBoard.trim().isEmpty()) {
-                        if (!prevClip.equals(clipBoard)) {
-                            log.trace(clipBoard + clipSufix);
-                            prevClip = clipBoard;
+                    if (clipBoard !=null) {
+                        if (!clipBoard.trim().isEmpty()) {
+                            if (!prevClip.equals(clipBoard)) {
+                                log.trace(clipBoard + clipSufix);
+                                prevClip = clipBoard;
+                            }
                         }
                     }
                     try {
